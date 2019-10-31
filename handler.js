@@ -19,6 +19,7 @@ const AWS = require('aws-sdk');
 // };
 
 module.exports = {
+  //create function
   create: async(event, context)=>{
     let bodyObj = {}
     try {
@@ -48,9 +49,9 @@ module.exports = {
     let putResult = {}
     try{
       let dynamodb =  new AWS.DynamoDB.DocumentClient()
-      putResult = await dynamodb.put(putParams).promise()
+      putResult = await dynamodb.put(putParams).promise();
     }catch(putError){
-      console.log('There was a problem inserting data');
+      console.log('There was a problem inserting data', putError);
       console.log('putParams', putParams);
       return {
         statusCode : 500
@@ -61,7 +62,21 @@ module.exports = {
       statusCode : 201
     }
   },
+  
+  //list all data function
   list: async(event, context)=>{
+    try {
+      let dynamodb = new AWS.DynamoDB.DocumentClient()
+      getResults = await dynamodb.get().promise();
+    }catch(getError){
+      console.log('There was a problem getting the data', getError);
+      return {
+        statusCode :  500
+      }
+    }
 
+    return {
+      statusCode : 200
+    }
   }
 }

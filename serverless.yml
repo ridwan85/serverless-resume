@@ -46,7 +46,7 @@ provider:
 
 # you can define service wide environment variables here
 environment:
-    DYNAMODB: value1
+  DYNAMODB: value1
 
 # you can add packaging information here
 #package:
@@ -62,32 +62,32 @@ functions:
     handler: handler.create
     events:
       - http:
-            path: /v1/resume
-            method: post
+          path: /v1/resume
+          method: post
   list:
     handler: handler.list
     events:
       - http:
-            path: /v1/resume
-            method:  get
+          path: /v1/resume
+          method:  get
   get:
     handler: handler.get
     events:
       - http:
-            path: /v1/resume/{id}
-            method:  get
+          path: /v1/resume/{id}
+          method:  get
   update:
     handler: handler.update
     events:
       - http:
-            path: /v1/resume/{id}
-            method:  put
+          path: /v1/resume/{id}
+          method:  put
   delete:
     handler: handler.delete
     events:
       - http:
-            path: /v1/resume/{id}
-            method:  delete
+          path: /v1/resume/{id}
+          method:  delete
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
